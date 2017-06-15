@@ -129,7 +129,7 @@ public class SolutionIT {
     public static void beforeAll() {
         startUrl = "http://whipbird.mattcalthrop.com/";
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 5);
+        wait = new WebDriverWait(driver, 10);
     }
 
     @AfterClass
@@ -176,7 +176,7 @@ public class SolutionIT {
     // Step 3
     @Test
     public void notLoggedIn_clickAboutMenu() {
-        // TODO
+        wait.until(presenceOfElementLocated(By.id(aboutMenuId)));
         WebElement aboutMenu = driver.findElement(By.id(aboutMenuId));
         wait.until(presenceOfElementLocated(By.id(aboutMenuId)));
         aboutMenu.click();
@@ -189,6 +189,14 @@ public class SolutionIT {
     @Test
     public void notLoggedIn_logInWithIncorrectCredentials() {
         // TODO
+        logIn (false);
+        assertElementNotPresent(logOutMenuId);
+        assertElementNotPresent(myWhipbirdsMenuId);
+        assertUrlEquals("http://whipbird.mattcalthrop.com/#!/login");
+        assertTitleEquals("whipbird: log in");
+        assertElementPresent(popupMessageId);
+        assertElementTextEquals(By.id("footer-right"),"");
+
 
     }
 
@@ -199,6 +207,10 @@ public class SolutionIT {
     public void loggedIn_checkMenus() {
         logIn(true);
         // TODO
+        //assertElementPresent(logOutMenuId);
+        //assertElementPresent(aboutMenuId);
+        //assertElementPresent(myWhipbirdsMenuId);
+
     }
 
     // Step 6
