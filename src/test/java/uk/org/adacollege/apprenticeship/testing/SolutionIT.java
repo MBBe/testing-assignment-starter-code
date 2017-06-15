@@ -159,20 +159,16 @@ public class SolutionIT {
         assertElementPresent(aboutMenuId);
         assertElementNotPresent(logOutMenuId);
         assertElementNotPresent(myWhipbirdsMenuId);
-        // TODO: complete for all other menus
     }
 
     // Step 2
     @Test
     public void notLoggedIn_checkCurrentPage() {
-        // TODO
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/login");
         assertTitleEquals("whipbird: log in");
-        //assertElementTextEquals(By("h4")"log in");
-        //assertElementTextEquals(By.id("footer-right");
-        /*
-        Page heading (text at top left of page, below navigation bar) should be set correctly.
-        Page footer (right) should be empty.*/
+        assertElementTextEquals(By.tagName("h4"),"Log in");
+        assertElementTextEquals(By.id("footer-right"),"");
+
 
 
     }
