@@ -206,10 +206,10 @@ public class SolutionIT {
     @Test
     public void loggedIn_checkMenus() {
         logIn(true);
-        // TODO
-        //assertElementPresent(logOutMenuId);
-        //assertElementPresent(aboutMenuId);
-        //assertElementPresent(myWhipbirdsMenuId);
+        assertElementPresent(logOutMenuId);
+        assertElementPresent(aboutMenuId);
+        assertElementPresent(myWhipbirdsMenuId);
+        assertElementNotPresent(logInMenuId);
 
     }
 
