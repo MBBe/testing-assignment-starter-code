@@ -217,12 +217,26 @@ public class SolutionIT {
     @Test
     public void loggedIn_checkCurrentPage() {
         // TODO
+        wait.until(presenceOfElementLocated(By.id(logInButtonId)));
+        WebElement logInButton = driver.findElement(By.id(logInButtonId));
+        wait.until(presenceOfElementLocated(By.id(logInButtonId)));
+        logInButton.click();
+        //logInButtonId
+        //assertUrlEquals("http://whipbird.mattcalthrop.com/#!/my-whipbirds");
+        //assertTitleEquals("whipbird: my whipbirds");
+        //assertElementTextEquals(By.tagName("h4"),"Current whipbirds for Manasseh Boyd");
+        //assertElementTextEquals(By.id("footer-right"),"Manasseh Boyd");
+
+
     }
 
     // Step 7
     @Test
     public void loggedIn_clickLogOutMenu() {
         // TODO
+        //assertUrlEquals("http://whipbird.mattcalthrop.com/#!/my-whipbirds");
+        //assertTitleEquals("whipbird: about");
+        //assertTitleEquals("whipbird: log in");
     }
 
     // Step 8
@@ -235,5 +249,6 @@ public class SolutionIT {
     @Test
     public void loggedIn_addNewWhipbirdThenDeleteIt() {
         // TODO
+        //assertElementPresent(popupMessageId);
     }
 }
