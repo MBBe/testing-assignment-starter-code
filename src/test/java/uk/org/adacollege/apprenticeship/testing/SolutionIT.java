@@ -252,6 +252,17 @@ public class SolutionIT {
     @Test
     public void loggedIn_addNewWhipbirdThenDeleteIt() {
         // TODO
-        //assertElementPresent(popupMessageId);
+        //assertElementPresent(popupMessageId);#
+        logIn (true);
+        wait.until(presenceOfElementLocated(By.id("name")));
+        driver.findElement(By.id("name")).sendKeys("tom");
+        wait.until(presenceOfElementLocated(By.id("age")));
+        driver.findElement(By.id("age")).sendKeys("66");
+        driver.findElement(By.id("add-new-whipbird-button")).click();
+        assertElementTextEquals(By.id("global-snackbar"),"Whipbird added: tom");
+        assertElementTextEquals(By.id("whipbird-name-1"), "tom");
+        assertElementTextEquals(By.id("whipbird-age-1"), "66");
+        driver.findElement(By.id("delete-whipbird-button-1")).click();
+
     }
 }
