@@ -238,6 +238,10 @@ public class SolutionIT {
     @Test
     public void loggedIn_addNewWhipbird() {
         // TODO
+        logIn (true);
+        assertElementTextEquals(By.id("global-snackbar"),"");
+        
+
     }
 
     // Step 9
