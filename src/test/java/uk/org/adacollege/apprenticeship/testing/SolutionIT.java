@@ -188,7 +188,6 @@ public class SolutionIT {
     // Step 4
     @Test
     public void notLoggedIn_logInWithIncorrectCredentials() {
-        // TODO
         logIn (false);
         assertElementNotPresent(logOutMenuId);
         assertElementNotPresent(myWhipbirdsMenuId);
@@ -217,12 +216,9 @@ public class SolutionIT {
     @Test
     public void loggedIn_checkCurrentPage() {
         // TODO
-        wait.until(presenceOfElementLocated(By.id(logInButtonId)));
-        WebElement logInButton = driver.findElement(By.id(logInButtonId));
-        wait.until(presenceOfElementLocated(By.id(logInButtonId)));
-        logInButton.click();
-        //logInButtonId
-        //assertUrlEquals("http://whipbird.mattcalthrop.com/#!/my-whipbirds");
+        logIn(true);
+        assertUrlEquals("http://whipbird.mattcalthrop.com/#!/my-whipbirds");
+        //wait.until(presenceOfElementLocated(By.id(startUrl)));
         //assertTitleEquals("whipbird: my whipbirds");
         //assertElementTextEquals(By.tagName("h4"),"Current whipbirds for Manasseh Boyd");
         //assertElementTextEquals(By.id("footer-right"),"Manasseh Boyd");
@@ -234,9 +230,13 @@ public class SolutionIT {
     @Test
     public void loggedIn_clickLogOutMenu() {
         // TODO
-        //assertUrlEquals("http://whipbird.mattcalthrop.com/#!/my-whipbirds");
-        //assertTitleEquals("whipbird: about");
-        //assertTitleEquals("whipbird: log in");
+        //wait.until(presenceOfElementLocated(By.id(logOutButtonId)));
+        //WebElement logInButton = driver.findElement(By.id(logOutButtonId));
+        //wait.until(presenceOfElementLocated(By.id(logOutButtonId)));
+        //logOutButton.click();
+        //assertUrlEquals("http://whipbird.mattcalthrop.com/#!/logout");
+        //assertTitleEquals("whipbird: log out");
+        //assertElementTextEquals(By.tagName("h4"),"Log out");
     }
 
     // Step 8
