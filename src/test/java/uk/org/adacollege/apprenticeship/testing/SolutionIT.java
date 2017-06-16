@@ -225,7 +225,6 @@ public class SolutionIT {
     // Step 7
     @Test
     public void loggedIn_clickLogOutMenu() {
-        // TODO
         logIn(true);
         wait.until(presenceOfElementLocated(By.id(logOutMenuId)));
         driver.findElement(By.id(logOutMenuId)).click();
@@ -237,10 +236,15 @@ public class SolutionIT {
     // Step 8
     @Test
     public void loggedIn_addNewWhipbird() {
-        // TODO
         logIn (true);
-        assertElementTextEquals(By.id("global-snackbar"),"");
-        
+        wait.until(presenceOfElementLocated(By.id("name")));
+        driver.findElement(By.id("name")).sendKeys("james");
+        wait.until(presenceOfElementLocated(By.id("age")));
+        driver.findElement(By.id("age")).sendKeys("5");
+        driver.findElement(By.id("add-new-whipbird-button")).click();
+        assertElementTextEquals(By.id("global-snackbar"),"Whipbird added: james");
+        assertElementTextEquals(By.id("whipbird-name-0"), "james");
+        assertElementTextEquals(By.id("whipbird-age-0"), "5");
 
     }
 
