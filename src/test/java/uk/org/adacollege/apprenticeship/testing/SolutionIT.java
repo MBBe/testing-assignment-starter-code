@@ -226,11 +226,10 @@ public class SolutionIT {
     @Test
     public void loggedIn_clickLogOutMenu() {
         // TODO
-        //wait.until(presenceOfElementLocated(By.id(logOutButtonId)));
-        //WebElement logInButton = driver.findElement(By.id(logOutButtonId));
-        //wait.until(presenceOfElementLocated(By.id(logOutButtonId)));
-        //logOutButton.click();
-        //assertUrlEquals("http://whipbird.mattcalthrop.com/#!/logout");
+        logIn(true);
+        wait.until(presenceOfElementLocated(By.id(logOutMenuId)));
+        driver.findElement(By.id(logOutMenuId)).click();
+        assertUrlEquals("http://whipbird.mattcalthrop.com/#!/logout");
         //assertTitleEquals("whipbird: log out");
         //assertElementTextEquals(By.tagName("h4"),"Log out");
     }
