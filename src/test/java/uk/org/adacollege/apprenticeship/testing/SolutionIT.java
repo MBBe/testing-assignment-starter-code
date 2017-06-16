@@ -32,9 +32,7 @@ public class SolutionIT {
 
     // ========= UTILITY METHODS =========
 
-    /**
-     * Source & usage: https://stackoverflow.com/a/5709805
-     */
+    
     private static Function<WebDriver, WebElement> presenceOfElementLocated(final By locator) {
         return new Function<WebDriver, WebElement>() {
             @Override
@@ -109,12 +107,6 @@ public class SolutionIT {
     }
 
     private static void assertElementTextEquals(By selector, String expectedText) {
-        // TODO: implement this method
-        // - use assertTitleEquals() as an example pattern to follow
-        // - but instead of return driver.getTitle().equals(expectedTitle)
-        //   call driver.findElement() with the selector provided
-        //   and then get the text from that element
-        //   and then check that it equals the expected text
         Boolean result = wait.until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
                 return driver.findElement(selector).getText().equals(expectedText);
@@ -166,9 +158,8 @@ public class SolutionIT {
     public void notLoggedIn_checkCurrentPage() {
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/login");
         assertTitleEquals("whipbird: log in");
-        assertElementTextEquals(By.tagName("h4"),"Log in");
-        assertElementTextEquals(By.id("footer-right"),"");
-
+        assertElementTextEquals(By.tagName("h4"), "Log in");
+        assertElementTextEquals(By.id("footer-right"), "");
 
 
     }
@@ -182,19 +173,19 @@ public class SolutionIT {
         aboutMenu.click();
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/about");
         assertTitleEquals("whipbird: about");
-        assertElementTextEquals(By.tagName("h4"),"About this app");
+        assertElementTextEquals(By.tagName("h4"), "About this app");
     }
 
     // Step 4
     @Test
     public void notLoggedIn_logInWithIncorrectCredentials() {
-        logIn (false);
+        logIn(false);
         assertElementNotPresent(logOutMenuId);
         assertElementNotPresent(myWhipbirdsMenuId);
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/login");
         assertTitleEquals("whipbird: log in");
         assertElementPresent(popupMessageId);
-        assertElementTextEquals(By.id("footer-right"),"");
+        assertElementTextEquals(By.id("footer-right"), "");
 
 
     }
@@ -214,12 +205,11 @@ public class SolutionIT {
     // Step 6
     @Test
     public void loggedIn_checkCurrentPage() {
-        // TODO
         logIn(true);
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/my-whipbirds");
         assertTitleEquals("whipbird: my whipbirds");
-        assertElementTextEquals(By.tagName("h4"),"Current whipbirds for Manasseh Boyd");
-        assertElementTextEquals(By.id("footer-right"),"Manasseh Boyd");
+        assertElementTextEquals(By.tagName("h4"), "Current whipbirds for Manasseh Boyd");
+        assertElementTextEquals(By.id("footer-right"), "Manasseh Boyd");
     }
 
     // Step 7
@@ -230,19 +220,19 @@ public class SolutionIT {
         driver.findElement(By.id(logOutMenuId)).click();
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/logout");
         assertTitleEquals("whipbird: log out");
-        assertElementTextEquals(By.tagName("h4"),"Log out");
+        assertElementTextEquals(By.tagName("h4"), "Log out");
     }
 
     // Step 8
     @Test
     public void loggedIn_addNewWhipbird() {
-        logIn (true);
+        logIn(true);
         wait.until(presenceOfElementLocated(By.id("name")));
         driver.findElement(By.id("name")).sendKeys("james");
         wait.until(presenceOfElementLocated(By.id("age")));
         driver.findElement(By.id("age")).sendKeys("5");
         driver.findElement(By.id("add-new-whipbird-button")).click();
-        assertElementTextEquals(By.id("global-snackbar"),"Whipbird added: james");
+        assertElementTextEquals(By.id("global-snackbar"), "Whipbird added: james");
         assertElementTextEquals(By.id("whipbird-name-0"), "james");
         assertElementTextEquals(By.id("whipbird-age-0"), "5");
 
@@ -251,18 +241,16 @@ public class SolutionIT {
     // Step 9
     @Test
     public void loggedIn_addNewWhipbirdThenDeleteIt() {
-        // TODO
-        //assertElementPresent(popupMessageId);#
-        logIn (true);
+        logIn(true);
         wait.until(presenceOfElementLocated(By.id("name")));
         driver.findElement(By.id("name")).sendKeys("tom");
         wait.until(presenceOfElementLocated(By.id("age")));
         driver.findElement(By.id("age")).sendKeys("66");
         driver.findElement(By.id("add-new-whipbird-button")).click();
-        assertElementTextEquals(By.id("global-snackbar"),"Whipbird added: tom");
+        assertElementTextEquals(By.id("global-snackbar"), "Whipbird added: tom");
         assertElementTextEquals(By.id("whipbird-name-1"), "tom");
         assertElementTextEquals(By.id("whipbird-age-1"), "66");
         driver.findElement(By.id("delete-whipbird-button-1")).click();
-
     }
+
 }
