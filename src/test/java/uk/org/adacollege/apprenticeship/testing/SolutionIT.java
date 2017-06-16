@@ -230,8 +230,8 @@ public class SolutionIT {
         wait.until(presenceOfElementLocated(By.id(logOutMenuId)));
         driver.findElement(By.id(logOutMenuId)).click();
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/logout");
-        //assertTitleEquals("whipbird: log out");
-        //assertElementTextEquals(By.tagName("h4"),"Log out");
+        assertTitleEquals("whipbird: log out");
+        assertElementTextEquals(By.tagName("h4"),"Log out");
     }
 
     // Step 8
