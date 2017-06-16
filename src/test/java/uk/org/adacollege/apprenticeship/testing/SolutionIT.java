@@ -209,7 +209,6 @@ public class SolutionIT {
         assertElementPresent(aboutMenuId);
         assertElementPresent(myWhipbirdsMenuId);
         assertElementNotPresent(logInMenuId);
-
     }
 
     // Step 6
@@ -218,12 +217,9 @@ public class SolutionIT {
         // TODO
         logIn(true);
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/my-whipbirds");
-        //wait.until(presenceOfElementLocated(By.id(startUrl)));
-        //assertTitleEquals("whipbird: my whipbirds");
-        //assertElementTextEquals(By.tagName("h4"),"Current whipbirds for Manasseh Boyd");
-        //assertElementTextEquals(By.id("footer-right"),"Manasseh Boyd");
-
-
+        assertTitleEquals("whipbird: my whipbirds");
+        assertElementTextEquals(By.tagName("h4"),"Current whipbirds for Manasseh Boyd");
+        assertElementTextEquals(By.id("footer-right"),"Manasseh Boyd");
     }
 
     // Step 7
